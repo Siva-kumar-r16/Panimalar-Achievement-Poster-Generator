@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,32 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panimalar Achievement Poster Generator</title>
     <link rel="stylesheet" href="style.css">
+
     <!-- Google Fonts for Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,400..900;1,400..900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
     <header class="app-topbar">
         <div class="topbar-content">
             <div class="logo-area">
                 <h1>Panimalar Poster Studio</h1>
                 <p>Professional Achievement Announcement Generator</p>
             </div>
+
             <div class="header-actions">
-                <button id="btnGenerateTop" class="btn btn-primary shadow-glow">✨ Generate Poster</button>
+                <button id="btnGenerateTop" class="btn btn-primary shadow-glow">
+                    ✨ Generate Poster
+                </button>
             </div>
         </div>
     </header>
 
     <main class="app-layout">
+
         <!-- LEFT: Editor Interface -->
         <section class="editor-panel scrollable-panel">
-            
+
             <div class="card theme-card">
                 <div class="card-header">
                     <h3>🎨 Design & Theme</h3>
                 </div>
+
                 <div class="card-body">
                     <div class="theme-options">
                         <button class="theme-btn active" data-theme="maroon" style="--t-color: #6a040f;">Maroon</button>
@@ -40,12 +49,14 @@
                         <button class="theme-btn" data-theme="green" style="--t-color: #1b5e20;">Emerald</button>
                         <button class="theme-btn" data-theme="custom" style="--t-color: #333;">Custom</button>
                     </div>
+
                     <div id="customThemeContainer" class="hidden mt-3 p-3 bg-light rounded">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="colorPrimary">Primary Brand Color</label>
                                 <input type="color" id="colorPrimary" value="#6a040f">
                             </div>
+
                             <div class="form-group">
                                 <label for="colorSecondary">Gold / Accent</label>
                                 <input type="color" id="colorSecondary" value="#d4af37">
@@ -59,6 +70,7 @@
                 <div class="card-header">
                     <h3>📸 Student / Team Photo</h3>
                 </div>
+
                 <div class="card-body">
                     <div class="photo-upload-area" id="dropZone">
                         <label for="photoUpload" class="upload-btn">
@@ -66,21 +78,43 @@
                             <span class="upload-text">Click to Upload Photo</span>
                             <span class="upload-subtext">JPG, PNG (Auto-crops to frame)</span>
                         </label>
-                        <input type="file" id="photoUpload" accept="image/png, image/jpeg" class="hidden">
+
+                        <input
+                            type="file"
+                            id="photoUpload"
+                            accept="image/png, image/jpeg"
+                            class="hidden"
+                        >
                     </div>
-                    
+
                     <div id="photoControls" class="photo-controls hidden mt-3">
                         <div class="control-header">
                             <span class="badge badge-success">Photo Loaded</span>
-                            <p class="help-text">Drag directly on the preview poster to reposition.</p>
+                            <p class="help-text">
+                                Drag directly on the preview poster to reposition.
+                            </p>
                         </div>
+
                         <div class="form-group mt-2">
                             <label for="photoZoom">Zoom Level</label>
-                            <input type="range" id="photoZoom" min="0.1" max="3" step="0.01" value="1">
+                            <input
+                                type="range"
+                                id="photoZoom"
+                                min="0.1"
+                                max="3"
+                                step="0.01"
+                                value="1"
+                            >
                         </div>
+
                         <div class="button-group mt-2">
-                            <button id="btnResetPhoto" class="btn btn-outline">↺ Reset View</button>
-                            <button id="btnRemovePhoto" class="btn btn-danger">✖ Remove Photo</button>
+                            <button id="btnResetPhoto" class="btn btn-outline">
+                                ↺ Reset View
+                            </button>
+
+                            <button id="btnRemovePhoto" class="btn btn-danger">
+                                ✖ Remove Photo
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -90,9 +124,11 @@
                 <div class="card-header">
                     <h3>👤 Student Information</h3>
                 </div>
+
                 <div class="card-body">
                     <div class="form-group">
                         <label for="studentCount">Number of Students</label>
+
                         <select id="studentCount" class="premium-select">
                             <option value="1">1 Student</option>
                             <option value="2">2 Students</option>
@@ -105,16 +141,21 @@
                             <option value="9">9 Students</option>
                             <option value="10">10 Students</option>
                         </select>
-                        <small class="hint-text mt-1">Layout will automatically adapt.</small>
+
+                        <small class="hint-text mt-1">
+                            Layout will automatically adapt.
+                        </small>
                     </div>
-                    
+
                     <div id="studentInputsContainer" class="mt-3 student-grid">
                         <!-- Dynamically populated fields -->
                     </div>
 
                     <div class="form-row mt-4">
+
                         <div class="form-group">
                             <label for="yearSelect">Academic Year</label>
+
                             <select id="yearSelect">
                                 <option value="I YEAR">I YEAR</option>
                                 <option value="II YEAR">II YEAR</option>
@@ -122,10 +163,18 @@
                                 <option value="IV YEAR">IV YEAR</option>
                                 <option value="CUSTOM">Custom Year</option>
                             </select>
-                            <input type="text" id="customYear" class="hidden mt-2" placeholder="e.g. ALUMNI">
+
+                            <input
+                                type="text"
+                                id="customYear"
+                                class="hidden mt-2"
+                                placeholder="e.g. ALUMNI"
+                            >
                         </div>
+
                         <div class="form-group">
                             <label for="deptSelect">Department</label>
+
                             <select id="deptSelect">
                                 <option value="COMPUTER SCIENCE AND ENGINEERING">CSE</option>
                                 <option value="INFORMATION TECHNOLOGY">IT</option>
@@ -136,8 +185,15 @@
                                 <option value="ARTIFICIAL INTELLIGENCE AND DATA SCIENCE">AI&DS</option>
                                 <option value="CUSTOM">Custom Department</option>
                             </select>
-                            <input type="text" id="customDept" class="hidden mt-2" placeholder="Enter Full Department Name">
+
+                            <input
+                                type="text"
+                                id="customDept"
+                                class="hidden mt-2"
+                                placeholder="Enter Full Department Name"
+                            >
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -146,9 +202,14 @@
                 <div class="card-header">
                     <h3>🏆 Achievement / Prize</h3>
                 </div>
+
                 <div class="card-body">
+
                     <div class="form-group">
-                        <label for="achievementType">Position / Recognition Type</label>
+                        <label for="achievementType">
+                            Position / Recognition Type
+                        </label>
+
                         <select id="achievementType" class="premium-select">
                             <option value="1st">1st Prize</option>
                             <option value="2nd">2nd Prize</option>
@@ -156,13 +217,27 @@
                             <option value="won">Won</option>
                             <option value="selected">Selected</option>
                             <option value="custom">Custom Achievement</option>
-                            <option value="special">No Position (Special Achievement)</option>
+                            <option value="special">
+                                No Position (Special Achievement)
+                            </option>
                         </select>
                     </div>
-                    <div class="form-group hidden mt-3" id="customAchievementContainer">
-                        <label for="customAchievementText">Custom Achievement Text</label>
-                        <input type="text" id="customAchievementText" placeholder="e.g., BEST INNOVATION, MVP, FINALIST">
+
+                    <div
+                        class="form-group hidden mt-3"
+                        id="customAchievementContainer"
+                    >
+                        <label for="customAchievementText">
+                            Custom Achievement Text
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customAchievementText"
+                            placeholder="e.g., BEST INNOVATION, MVP, FINALIST"
+                        >
                     </div>
+
                 </div>
             </div>
 
@@ -170,34 +245,85 @@
                 <div class="card-header">
                     <h3>🎓 Event Details</h3>
                 </div>
+
                 <div class="card-body">
+
                     <div class="form-group">
                         <label for="eventName">Event Name</label>
-                        <input type="text" id="eventName" placeholder="e.g., PAPER PRESENTATION" value="PAPER PRESENTATION">
+
+                        <input
+                            type="text"
+                            id="eventName"
+                            placeholder="e.g., PAPER PRESENTATION"
+                            value="PAPER PRESENTATION"
+                        >
                     </div>
+
                     <div class="form-group">
-                        <label for="mainEventName">Main Symposium / Tech Fest Name</label>
-                        <input type="text" id="mainEventName" placeholder="e.g., IGNITEX'26" value="IGNITEX'26">
+                        <label for="mainEventName">
+                            Main Symposium / Tech Fest Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="mainEventName"
+                            placeholder="e.g., IGNITEX'26"
+                            value="IGNITEX'26"
+                        >
                     </div>
+
                     <div class="form-group">
-                        <label for="symposiumType">Event Type / Description</label>
-                        <input type="text" id="symposiumType" placeholder="e.g., A National Level Technical Symposium" value="A National Level Technical Symposium">
+                        <label for="symposiumType">
+                            Event Type / Description
+                        </label>
+
+                        <input
+                            type="text"
+                            id="symposiumType"
+                            placeholder="e.g., A National Level Technical Symposium"
+                            value="A National Level Technical Symposium"
+                        >
                     </div>
+
                     <div class="form-group">
                         <label for="eventDate">Date</label>
-                        <input type="text" id="eventDate" placeholder="e.g., 09 SEPTEMBER 2026" value="09 SEPTEMBER 2026">
+
+                        <input
+                            type="text"
+                            id="eventDate"
+                            placeholder="e.g., 09 SEPTEMBER 2026"
+                            value="09 SEPTEMBER 2026"
+                        >
                     </div>
-                    
+
                     <div class="divider-line mt-3 mb-3"></div>
-                    
+
                     <div class="form-group">
-                        <label for="organisedAt">Organised At (Institution Name)</label>
-                        <input type="text" id="organisedAt" placeholder="e.g., SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY" value="SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY">
+                        <label for="organisedAt">
+                            Organised At (Institution Name)
+                        </label>
+
+                        <input
+                            type="text"
+                            id="organisedAt"
+                            placeholder="e.g., SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY"
+                            value="SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY"
+                        >
                     </div>
+
                     <div class="form-group">
-                        <label for="organisedBy">Organised By (Department)</label>
-                        <input type="text" id="organisedBy" placeholder="e.g., DEPARTMENT OF COMPUTER SCIENCE" value="DEPARTMENT OF COMPUTER SCIENCE">
+                        <label for="organisedBy">
+                            Organised By (Department)
+                        </label>
+
+                        <input
+                            type="text"
+                            id="organisedBy"
+                            placeholder="e.g., DEPARTMENT OF COMPUTER SCIENCE"
+                            value="DEPARTMENT OF COMPUTER SCIENCE"
+                        >
                     </div>
+
                 </div>
             </div>
 
@@ -205,63 +331,150 @@
                 <div class="card-header">
                     <h3>⚙️ Display Settings</h3>
                 </div>
+
                 <div class="card-body">
+
                     <div class="form-row">
+
                         <div class="checkbox-group">
                             <input type="checkbox" id="showYear" checked>
                             <label for="showYear">Display Year</label>
                         </div>
+
                         <div class="checkbox-group">
                             <input type="checkbox" id="showDept" checked>
                             <label for="showDept">Display Department</label>
                         </div>
+
                     </div>
+
                 </div>
             </div>
 
             <div class="card actions-card">
-                <button id="btnGenerateBottom" class="btn btn-primary full-width large-btn shadow-glow">✨ Generate Random Phrases & Update Poster</button>
-                
+
+                <button
+                    id="btnGenerateBottom"
+                    class="btn btn-primary full-width large-btn shadow-glow"
+                >
+                    ✨ Generate Random Phrases & Update Poster
+                </button>
+
                 <div class="form-group mt-3">
                     <label for="exportQuality">Export Resolution</label>
+
                     <select id="exportQuality" class="premium-select">
-                        <option value="4k">4K &mdash; 2160 &times; 2700</option>
-                        <option value="8k">8K &mdash; 4320 &times; 5400</option>
+                        <option value="4k">
+                            4K &mdash; 2160 &times; 2700
+                        </option>
+
+                        <option value="8k">
+                            8K &mdash; 4320 &times; 5400
+                        </option>
                     </select>
                 </div>
+
                 <div class="export-actions mt-3">
-                    <button id="btnDownload" class="btn btn-success">💾 Download High-Res PNG</button>
-                    <button id="btnPrint" class="btn btn-secondary">🖨️ Print Poster</button>
+
+                    <button id="btnDownload" class="btn btn-success">
+                        💾 Download High-Res PNG
+                    </button>
+
+                    <button id="btnPrint" class="btn btn-secondary">
+                        🖨️ Print Poster
+                    </button>
+
                 </div>
-                
+
                 <div class="danger-actions mt-4">
-                    <button id="btnResetForm" class="btn btn-text">↺ Reset Text Form</button>
-                    <button id="btnClearData" class="btn btn-text text-danger">🗑 Clear Saved Photo Data</button>
+
+                    <button id="btnResetForm" class="btn btn-text">
+                        ↺ Reset Text Form
+                    </button>
+
+                    <button
+                        id="btnClearData"
+                        class="btn btn-text text-danger"
+                    >
+                        🗑 Clear Saved Photo Data
+                    </button>
+
                 </div>
+
             </div>
-            
+
         </section>
 
         <!-- RIGHT: Live Preview Canvas -->
         <section class="preview-panel">
+
             <div class="preview-sticky-wrapper">
+
                 <div id="missingImagesWarning" class="warning-banner hidden">
-                    <strong>⚠️ Missing Fixed Assets:</strong> The application requires <code>images/logo.png</code> and <code>images/26.png</code> to be present in the images directory for offline use.
+                    <strong>⚠️ Missing Fixed Assets:</strong>
+                    The application requires
+                    <code>images/logo.png</code> and
+                    <code>images/26.png</code>
+                    to be present in the images directory for offline use.
                 </div>
-                
+
                 <div class="canvas-container">
+
                     <!-- High-Res Hidden Canvas (1080x1350) for Export -->
-                    <canvas id="poster-canvas" width="1080" height="1350" class="hidden"></canvas>
-                    
+                    <canvas
+                        id="poster-canvas"
+                        width="1080"
+                        height="1350"
+                        class="hidden"
+                    ></canvas>
+
                     <!-- Scaled Display Canvas for Interactive Preview -->
-                    <canvas id="display-canvas" width="1080" height="1350"></canvas>
-                    
-                    <div class="canvas-overlay-hint">Interactive Preview - Drag Photo to Reposition</div>
+                    <canvas
+                        id="display-canvas"
+                        width="1080"
+                        height="1350"
+                    ></canvas>
+
+                    <div class="canvas-overlay-hint">
+                        Interactive Preview - Drag Photo to Reposition
+                    </div>
+
                 </div>
+
             </div>
+
         </section>
+
     </main>
 
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>
+            © 2026
+            <a
+                href="https://sparklance-solutions.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Sparklance Solutions
+            </a>
+            . All Rights Reserved.
+        </p>
+
+        <p>
+            Designed &amp; Powered by
+            <a
+                href="https://sivakumars-portfolio.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Siva Kumar R
+            </a>
+        </p>
+    </footer>
+
     <script src="script.js"></script>
+
 </body>
 </html>
+```
