@@ -441,7 +441,7 @@ const CANVAS_W = 1080;
 
             // 3. Congratulations script + "Proud of your achievement"
             // The new header safely ends at Y=178, so starting this at 190 prevents collisions
-            drawCongratulations(targetCtx, 190);
+            drawCongratulations(targetCtx, 220);
 
             // 4. "Ideas Build a Brighter Tomorrow" — top right, beside Congratulations
             drawTopMotivational(targetCtx);
