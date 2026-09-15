@@ -602,77 +602,161 @@ const CANVAS_W = 1080;
            UPDATED HEADER FUNCTION TO EXACTLY MATCH REFERENCE IMAGE
            ------------------------------------------------------------- */
         function drawHeader(ctx) {
-            // Soft transparent white overlay for header area padding
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-            ctx.fillRect(0, 0, CANVAS_W, 192);
+    ctx.save();
 
-            const logoY = 24;
-            if (fixedImages.loaded) {
-                if (fixedImages.logo.width > 0) ctx.drawImage(fixedImages.logo, 38, logoY, 130, 130);
-                if (fixedImages.years26.width > 0) ctx.drawImage(fixedImages.years26, CANVAS_W - 168, logoY, 130, 130);
-            }
+    // Clean white header area with enough vertical space
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.98)';
+    ctx.fillRect(0, 0, CANVAS_W, 215);
 
-            const cx = CANVAS_W / 2;
-            let cy = logoY;
+    const logoY = 24;
 
-            // 1. Central Maroon Rounded Rectangle containing BOTH College Name & Subtitle
-            ctx.fillStyle = currentTheme.primary;
-            ctx.shadowColor = 'rgba(0,0,0,0.25)';
-            ctx.shadowBlur = 10;
-            ctx.shadowOffsetY = 4;
-            ctx.beginPath();
-            ctx.roundRect(cx - 270, cy, 540, 95, 12);
-            ctx.fill();
-            ctx.shadowColor = 'transparent';
-
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillStyle = '#ffffff';
-
-            // Text: PANIMALAR
-            ctx.font = "900 52px 'Montserrat'";
-            ctx.letterSpacing = "4px";
-            ctx.fillText(TXT_COLLEGE, cx, cy + 38);
-
-            // Text: ENGINEERING COLLEGE
-            ctx.font = "800 16px 'Montserrat'";
-            ctx.letterSpacing = "2.5px";
-            ctx.fillText(TXT_COLLEGE_SUB, cx, cy + 74);
-            ctx.letterSpacing = "0px"; // reset
-
-            cy += 105; 
-
-            // 2. Gold pill strip for Autonomous Status (slightly overlapping the maroon box visually)
-            ctx.fillStyle = currentTheme.secondary;
-            ctx.beginPath();
-            ctx.roundRect(cx - 165, cy, 330, 28, 14);
-            ctx.fill();
-
-            // Text: An Autonomous Institution (inside the gold strip)
-            ctx.font = "800 14px 'Montserrat'";
-            ctx.fillStyle = '#000000'; // Darker text for contrast on gold as per reference
-            ctx.letterSpacing = "0.5px";
-            ctx.fillText(TXT_STATUS, cx, cy + 14);
-            ctx.letterSpacing = "0px";
-
-            cy += 34;
-
-            // 3. Affiliation Text directly below the gold strip
-            ctx.font = "800 15px 'Montserrat'";
-            ctx.fillStyle = currentTheme.blue; // Dark blue as per reference
-            ctx.letterSpacing = "0.5px";
-            ctx.fillText(TXT_AFFILIATION, cx, cy);
-
-            cy += 22;
-
-            // 4. Trust Text below Affiliation
-            ctx.font = "800 13px 'Montserrat'";
-            ctx.fillStyle = currentTheme.primary; // Maroon as per reference
-            ctx.letterSpacing = "1px";
-            ctx.fillText(TXT_TRUST, cx, cy);
-            ctx.letterSpacing = "0px";
+    // Left and right fixed assets
+    if (fixedImages.loaded) {
+        if (fixedImages.logo && fixedImages.logo.width > 0) {
+            ctx.drawImage(
+                fixedImages.logo,
+                38,
+                logoY,
+                130,
+                130
+            );
         }
-        /* ------------------------------------------------------------- */
+
+        if (fixedImages.years26 && fixedImages.years26.width > 0) {
+            ctx.drawImage(
+                fixedImages.years26,
+                CANVAS_W - 168,
+                logoY,
+                130,
+                130
+            );
+        }
+    }
+
+    const cx = CANVAS_W / 2;
+
+    // ==========================================
+    // PANIMALAR MAIN HEADER
+    // ==========================================
+
+    const boxX = cx - 270;
+    const boxY = 24;
+    const boxW = 540;
+    const boxH = 95;
+
+    ctx.fillStyle = currentTheme.primary;
+
+    ctx.shadowColor = 'rgba(0,0,0,0.25)';
+    ctx.shadowBlur = 10;
+    ctx.shadowOffsetY = 4;
+
+    ctx.beginPath();
+    ctx.roundRect(
+        boxX,
+        boxY,
+        boxW,
+        boxH,
+        12
+    );
+    ctx.fill();
+
+    ctx.shadowColor = 'transparent';
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetY = 0;
+
+    // PANIMALAR
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#ffffff';
+
+    ctx.font = "900 52px 'Montserrat'";
+    ctx.letterSpacing = "4px";
+
+    ctx.fillText(
+        TXT_COLLEGE,
+        cx,
+        boxY + 38
+    );
+
+    // ENGINEERING COLLEGE
+    ctx.font = "800 16px 'Montserrat'";
+    ctx.letterSpacing = "2.5px";
+
+    ctx.fillText(
+        TXT_COLLEGE_SUB,
+        cx,
+        boxY + 74
+    );
+
+    ctx.letterSpacing = "0px";
+
+    // ==========================================
+    // AUTONOMOUS INSTITUTION
+    // ==========================================
+
+    const statusY = 129;
+
+    ctx.fillStyle = currentTheme.secondary;
+
+    ctx.beginPath();
+    ctx.roundRect(
+        cx - 165,
+        statusY,
+        330,
+        28,
+        14
+    );
+    ctx.fill();
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    ctx.font = "800 14px 'Montserrat'";
+    ctx.fillStyle = '#000000';
+    ctx.letterSpacing = "0.5px";
+
+    ctx.fillText(
+        TXT_STATUS,
+        cx,
+        statusY + 14
+    );
+
+    ctx.letterSpacing = "0px";
+
+    // ==========================================
+    // AFFILIATION
+    // ==========================================
+
+    ctx.font = "800 15px 'Montserrat'";
+    ctx.fillStyle = currentTheme.blue;
+    ctx.letterSpacing = "0.5px";
+
+    ctx.fillText(
+        TXT_AFFILIATION,
+        cx,
+        171
+    );
+
+    ctx.letterSpacing = "0px";
+
+    // ==========================================
+    // TRUST
+    // ==========================================
+
+    ctx.font = "800 13px 'Montserrat'";
+    ctx.fillStyle = currentTheme.primary;
+    ctx.letterSpacing = "1px";
+
+    ctx.fillText(
+        TXT_TRUST,
+        cx,
+        194
+    );
+
+    ctx.letterSpacing = "0px";
+
+    ctx.restore();
+}
 
         function drawCongratulations(ctx, startY) {
             ctx.save();
