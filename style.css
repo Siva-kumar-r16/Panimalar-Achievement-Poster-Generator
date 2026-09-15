@@ -378,3 +378,63 @@
                 margin: 0 auto;
             }
         }
+
+
+/* =========================================
+   SITE FOOTER
+   ========================================= */
+
+.site-footer {
+    width: 100%;
+    padding: 22px 20px;
+    margin-top: 30px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.08);
+    border-top: 1px solid rgba(106, 4, 15, 0.15);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.site-footer p {
+    margin: 3px 0;
+    color: #666;
+}
+
+.site-footer a {
+    color: #6a040f;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.site-footer a:hover {
+    color: #d4af37;
+    text-decoration: underline;
+}
+
+.site-footer p:last-child {
+    font-size: 12px;
+    color: #888;
+}
+
+.site-footer p:last-child a {
+    color: #6a040f;
+}
+
+.site-footer p:last-child a:hover {
+    color: #d4af37;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .site-footer {
+        padding: 18px 15px;
+        margin-top: 20px;
+        font-size: 12px;
+    }
+
+    .site-footer p:last-child {
+        font-size: 11px;
+    }
+}
